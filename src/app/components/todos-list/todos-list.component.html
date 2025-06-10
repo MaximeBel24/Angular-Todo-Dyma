@@ -1,0 +1,13 @@
+<hr>
+<app-todo-filter [filter]="filter()" (filterChange)="filter.set($event)"/>
+<hr>
+<strong>Nombre de todos : {{ todosLength() }}</strong>
+<hr>
+
+<ul class="flex flex-col gap-12">
+  @for (todo of filteredTodosList(); track todo._id) {
+  <app-todo (toggleTodo)="toggleTodo.emit($event)" [todo]="todo" />
+  } @empty {
+  <li>Il n'y a pas de todo pour l'instant</li>
+  }
+</ul>

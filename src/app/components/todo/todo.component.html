@@ -1,0 +1,5 @@
+@let t = todo();
+<li class="flex px-12 gap-12 border">
+    <p class="flex-auto">{{ t.name }}</p>
+    <input type="checkbox" [checked]="t.done">
+</li>
