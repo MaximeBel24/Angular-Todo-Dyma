@@ -1,2 +1,12 @@
 <app-todo-form (addTodo)="addTodo($event)" />
-<app-todos-list (toggleTodo)="toggleTodo($event)" [todosList]="todosList()" />
+@if (todosIsLoading()) {
+  <h2>Chargement en cours...</h2>
+} @else { 
+    <app-todos-list 
+    (updateTodo)="updateTodo($event)" 
+    (selectTodo)="selectTodo($event)" 
+    (deleteTodo)="deleteTodo($event)"
+    [todosList]="todosList()"
+    ></app-todos-list>
+}
+<pre>{{ selectedTodo() | json }}</pre>

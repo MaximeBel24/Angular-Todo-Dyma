@@ -9,5 +9,10 @@ import { Todo } from '../../shared/interfaces';
 })
 export class TodoComponent {
   todo = input.required<Todo>();
-  toggleTodo = output<string>();
+  updateTodo = output<Todo>();
+  selectTodo = output<string>();
+  deleteTodo = output<string>();
+  toggleTodo() {
+    this.updateTodo.emit({...this.todo(), done: !this.todo().done})
+  }
 }
